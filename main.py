@@ -14,7 +14,7 @@ def send_welcome(message):
     markup.add(telebot.types.InlineKeyboardButton("📈 Платформа", url="https://..."))
     bot.send_message(message.chat.id, "👋 Привіт! Ти потрапив до бота, де я розповідаю, як заробляю з телефону 💸", reply_markup=markup)
 
-@app.route(f"/{TOKEN}", methods=["POST"])
+@app.route("/webhook", methods=["POST"])
 def webhook():
     bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
     return "ok", 200
